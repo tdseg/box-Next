@@ -4,7 +4,6 @@ PORT=8080
 AUUID=5aaed9b7-7fe3-47c3-bb52-db59859ce198
 ParameterSSENCYPT=chacha20-ietf-poly1305
 CADDYIndexPage=https://raw.githubusercontent.com/caddyserver/dist/master/welcome/index.html
-CaddyConfig=https://raw.githubusercontent.com/bsefwe/glitch-Xray/main/etc/Caddyfile
 XRayConfig=https://raw.githubusercontent.com/bsefwe/glitch-Xray/main/etc/config.json
 # download execution
 chmod +x caddy xray
@@ -16,8 +15,6 @@ wget $CADDYIndexPage -O usr/share/caddy/index.html && unzip -qo usr/share/caddy/
 
 
 # set config file
-mkdir -p /etc/caddy
-wget -qO- $CaddyConfig | sed -e "1c :$PORT" -e "s/\$AUUID/$AUUID/g" -e "s/\$MYUUID-HASH/$(./caddy hash-password --plaintext $AUUID)/g" > etc/caddy/Caddyfile
 wget -qO- $XRayConfig  | sed -e "s/\$AUUID/$AUUID/g" -e "s/\$ParameterSSENCYPT/$ParameterSSENCYPT/g" > xray.json
 
 
