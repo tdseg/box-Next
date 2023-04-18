@@ -1,6 +1,5 @@
 #!/bin/bash
-# set val
-python3 /app/self-ping.py &
+
 PORT=8080
 AUUID=5aaed9b7-7fe3-47c3-bb52-db59859ce198
 ParameterSSENCYPT=chacha20-ietf-poly1305
@@ -8,9 +7,6 @@ CADDYIndexPage=https://raw.githubusercontent.com/caddyserver/dist/master/welcome
 CaddyConfig=https://raw.githubusercontent.com/bsefwe/glitch-Xray/main/etc/Caddyfile
 XRayConfig=https://raw.githubusercontent.com/bsefwe/glitch-Xray/main/etc/config.json
 # download execution
-wget "https://caddyserver.com/api/download?os=linux&arch=amd64" -O caddy
-wget "https://github.com/XTLS/Xray-core/releases/latest/download/Xray-linux-64.zip" -O xray-linux-64.zip
-unzip -o xray-linux-64.zip && rm -rf xray-linux-64.zip
 chmod +x caddy xray
 
 # set caddy

@@ -1,0 +1,37 @@
+:8080
+root * usr/share/caddy
+file_server browse
+
+log {
+    output stdout
+}
+
+basicauth /5aaed9b7-7fe3-47c3-bb52-db59859ce198/* {
+    5aaed9b7-7fe3-47c3-bb52-db59859ce198 $2a$14$jcffC4.NzP0reFLE7H1Np.Toysx3D6oqffNNwFGoc9e8LKlgP3QiK
+}
+
+@websocket_xray_vmess {
+  path /5aaed9b7-7fe3-47c3-bb52-db59859ce198-vmess
+}
+reverse_proxy @websocket_xray_vmess 127.0.0.1:7001
+
+
+@websocket_xray_vless {
+  path /5aaed9b7-7fe3-47c3-bb52-db59859ce198-vless
+}
+reverse_proxy @websocket_xray_vless 127.0.0.1:7002
+
+@websocket_xray_trojan {
+  path /5aaed9b7-7fe3-47c3-bb52-db59859ce198-trojan
+}
+reverse_proxy @websocket_xray_trojan 127.0.0.1:7003
+
+@websocket_xray_ss {
+  path /5aaed9b7-7fe3-47c3-bb52-db59859ce198-ss
+}
+reverse_proxy @websocket_xray_ss 127.0.0.1:4234
+
+@websocket_xray_socks {
+  path /5aaed9b7-7fe3-47c3-bb52-db59859ce198-socks
+}
+reverse_proxy @websocket_xray_socks 127.0.0.1:5234
