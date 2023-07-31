@@ -7,19 +7,9 @@ log {
 }
 
 basicauth /5aaed9b7-7fe3-47c3-bb52-db59859ce198/* {
-    5aaed9b7-7fe3-47c3-bb52-db59859ce198 $2a$14$jcffC4.NzP0reFLE7H1Np.Toysx3D6oqffNNwFGoc9e8LKlgP3QiK
+    5aaed9b7-7fe3-47c3-bb52-db59859ce198 $2a$14$MIi9QziExC0S6vI8RRvQ2eH7ppu7EulnJ329WanB3wXgajai.dBzy
 }
 
-@websocket_xray_vmess {
-  path /5aaed9b7-7fe3-47c3-bb52-db59859ce198-vmess
-}
-reverse_proxy @websocket_xray_vmess 127.0.0.1:7001
-
-
-@websocket_xray_vless {
-  path /5aaed9b7-7fe3-47c3-bb52-db59859ce198-vless
-}
-reverse_proxy @websocket_xray_vless 127.0.0.1:7002
 
 @websocket_xray_trojan {
   path /5aaed9b7-7fe3-47c3-bb52-db59859ce198-trojan
